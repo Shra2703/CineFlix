@@ -1,5 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import React from 'react'
+
+// components
 import SignInOut from "./components/SignInOut";
 
 function App(){
