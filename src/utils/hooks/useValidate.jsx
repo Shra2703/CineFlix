@@ -3,12 +3,10 @@ import { useState } from "react";
 const useValidate = (isLogin) => {
   const [errors, setErrors] = useState({});
 
-
   const validateFields = (login, fieldName = null, fieldValue = null) => {
     const values = fieldName
       ? { [fieldName]: fieldValue }
       : { ...login, ...(isLogin ? {} : { username: login.username }) };
-
 
     const newErrors = {};
     if (!isLogin || fieldName === "username") {
@@ -34,22 +32,19 @@ const useValidate = (isLogin) => {
     }
 
     setErrors(newErrors);
-    console.log(newErrors)
+    console.log(newErrors);
     return newErrors;
   };
 
-
   const clearError = (name) => {
-
-    setErrors((prev => ({...prev, [name]:"" })))
-    
-  }
+    setErrors((prev) => ({ ...prev, [name]: "" }));
+  };
 
   const resetErrors = () => {
-    setErrors({})
-  }
+    setErrors({});
+  };
 
-  return { validateFields, errors,resetErrors, clearError };
+  return { validateFields, errors, resetErrors, clearError };
 };
 
 export default useValidate;

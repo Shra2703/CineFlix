@@ -23,7 +23,14 @@ const Login = () => {
 
   const handleFocus = (e) => {
     clearError(e.target.name);
-    console.log(e.target.name)
+  };
+
+  const resetLogin = () => {
+    setLogin({
+      username: "",
+      email: "",
+      password: "",
+    });
   };
 
   const handleSubmit = (e) => {
@@ -35,12 +42,13 @@ const Login = () => {
     }
 
     resetErrors();
-    setLogin({});
+    resetLogin();
     console.log("Form submitted successfully");
   };
 
   const handleLogin = () => {
     setIsLogin((prev) => !prev);
+    resetLogin();
     resetErrors();
   };
   return (
