@@ -10,7 +10,7 @@ const useValidate = (isLogin) => {
 
     const newErrors = {};
     if (!isLogin || fieldName === "username") {
-      if (!values.username?.trim()) {
+      if (!login.username?.trim()) {
         newErrors.username = "Name is required";
       }
     }
@@ -32,7 +32,6 @@ const useValidate = (isLogin) => {
     }
 
     setErrors(newErrors);
-    console.log(newErrors);
     return newErrors;
   };
 

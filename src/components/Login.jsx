@@ -1,7 +1,18 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+
+// components
 import Input from "../ui/Input";
 import Button from "../ui/Button";
+
+// hooks
 import useValidate from "../utils/hooks/useValidate";
+
+// for authentication
+import { auth } from "../utils/firebase";
 
 const Login = () => {
   const [login, setLogin] = useState({
@@ -10,6 +21,7 @@ const Login = () => {
     password: "",
   });
   const [isLogin, setIsLogin] = useState(true);
+  const [signInUpError, setSignInUpError] = useState(null);
 
   const { errors, clearError, resetErrors, validateFields } =
     useValidate(isLogin);
@@ -41,9 +53,43 @@ const Login = () => {
       return;
     }
 
+    if (!isLogin) {
+      // sign up authentication logic
+      createUserWithEmailAndPassword(auth, login.email, login.password)
+        .then((userCredential) => {
+          // Signed up
+          const user = userCredential.user;
+          console.log(user);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const message = errorCode
+            .split("/")[1]
+            .split("-")
+            .map((str) => str.charAt(0).toUpperCase() + str.slice(1))
+            .join(" ");
+          setSignInUpError(message);
+        });
+    } else {
+      // sign in logic
+      signInWithEmailAndPassword(auth, login.email, login.password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          console.log(user);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const message = errorCode
+            .split("/")[1]
+            .split("-")
+            .map((str) => str.charAt(0).toUpperCase() + str.slice(1))
+            .join(" ");
+          setSignInUpError(message);
+        });
+    }
+
     resetErrors();
     resetLogin();
-    console.log("Form submitted successfully");
   };
 
   const handleLogin = () => {
@@ -91,6 +137,11 @@ const Login = () => {
             onFocus={handleFocus}
           />
           <Button type="submit" label={isLogin ? "Sign In" : "Sign Up"} />
+          {signInUpError && (
+            <p className="text-red-500  font-medium text-sm mt-1 mx-2 transition-all duration-300">
+              {signInUpError}
+            </p>
+          )}
         </form>
         <p className="p-5 text-gray-500 font-bold text-center text-xl">OR</p>
         <p className="text-base text-gray-500 text-center font-medium">
