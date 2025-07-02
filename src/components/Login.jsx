@@ -1,8 +1,4 @@
 import { useState } from "react";
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
 
 // components
 import Input from "../ui/Input";
@@ -10,9 +6,7 @@ import Button from "../ui/Button";
 
 // hooks
 import useValidate from "../utils/hooks/useValidate";
-
-// for authentication
-import { auth } from "../utils/firebase";
+import useAuthenticate from "../utils/hooks/useAuthenticate";
 
 const Login = () => {
   const [login, setLogin] = useState({
@@ -21,10 +15,13 @@ const Login = () => {
     password: "",
   });
   const [isLogin, setIsLogin] = useState(true);
-  const [signInUpError, setSignInUpError] = useState(null);
+  const [isHiddenPassword, setIsHiddenPassword] = useState(true);
 
   const { errors, clearError, resetErrors, validateFields } =
     useValidate(isLogin);
+
+  const { authenticateSignUp, signInUpError, authenticateSignIn } =
+    useAuthenticate();
 
   const handleChange = (e) => {
     setLogin({
@@ -55,37 +52,10 @@ const Login = () => {
 
     if (!isLogin) {
       // sign up authentication logic
-      createUserWithEmailAndPassword(auth, login.email, login.password)
-        .then((userCredential) => {
-          // Signed up
-          const user = userCredential.user;
-          console.log(user);
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const message = errorCode
-            .split("/")[1]
-            .split("-")
-            .map((str) => str.charAt(0).toUpperCase() + str.slice(1))
-            .join(" ");
-          setSignInUpError(message);
-        });
+      authenticateSignUp(login.email, login.password);
     } else {
-      // sign in logic
-      signInWithEmailAndPassword(auth, login.email, login.password)
-        .then((userCredential) => {
-          const user = userCredential.user;
-          console.log(user);
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const message = errorCode
-            .split("/")[1]
-            .split("-")
-            .map((str) => str.charAt(0).toUpperCase() + str.slice(1))
-            .join(" ");
-          setSignInUpError(message);
-        });
+      // sign in authentication logic
+      authenticateSignIn(login.email, login.password);
     }
 
     resetErrors();
@@ -127,7 +97,7 @@ const Login = () => {
             onFocus={handleFocus}
           />
           <Input
-            type="password"
+            type={isHiddenPassword ? "password" : "text"}
             placeholder="Password"
             value={login.password}
             name="password"
@@ -135,6 +105,9 @@ const Login = () => {
             error={errors.password}
             onBlur={() => validateFields(login, "password", login.password)}
             onFocus={handleFocus}
+            isHiddenPassword={isHiddenPassword}
+            togglePassword={setIsHiddenPassword}
+            showToggle={true}
           />
           <Button type="submit" label={isLogin ? "Sign In" : "Sign Up"} />
           {signInUpError && (
