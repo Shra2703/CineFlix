@@ -3,12 +3,15 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { auth } from "../utils/firebase";
 
-import Button from "../ui/Button";
+// constants
 import { LOGO_URL } from "../constanst";
+
+// components
+import UserProfile from "./UserProfile";
 
 const Header = () => {
   const navigate = useNavigate();
-  const user = useSelector(state => state.user)
+  const user = useSelector((state) => state.user);
 
   const handleSignOut = () => {
     signOut(auth)
@@ -29,7 +32,9 @@ const Header = () => {
         />
       </div>
 
-      {user && <Button label="Sign Out" onClick={handleSignOut} className="py-3 px-5" />}
+      {user && (
+        <UserProfile user={user?.displayName} onSignOut={handleSignOut} />
+      )}
     </div>
   );
 };
