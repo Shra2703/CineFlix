@@ -2,9 +2,15 @@ import { useState } from "react";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  onAuthStateChanged,
+  updateProfile,
 } from "firebase/auth";
 
 import { auth } from "../firebase";
+import { useDispatch } from "react-redux";
+
+// store
+import { addUser, removeUser } from "../redux/slices/userSlice";
 
 const getErrorInString = (str) => {
   return str
@@ -16,34 +22,61 @@ const getErrorInString = (str) => {
 
 const useAuthenticate = () => {
   const [signInUpError, setSignInUpError] = useState(null);
+  const dispatch = useDispatch();
 
-  const authenticateSignUp = (email, password) => {
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed up
-        const user = userCredential.user;
-        console.log(user);
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const message = getErrorInString(errorCode);
-        setSignInUpError(message);
+  const authenticateSignUp = async (name, email, password) => {
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = userCredential.user;
+      await updateProfile(user, {
+        displayName: name,
+        photoURL: "https://example.com/jane-q-user/profile.jpg",
       });
+
+      return user;
+    } catch (error) {
+      const message = getErrorInString(error.code);
+      setSignInUpError(message);
+    }
   };
 
-  const authenticateSignIn = (email, password) => {
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        console.log(user);
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const message = getErrorInString(errorCode);
-        setSignInUpError(message);
-      });
+  const authenticateSignIn = async (email, password) => {
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = userCredential.user;
+      return user;
+    } catch (error) {
+      const message = getErrorInString(error.code);
+      setSignInUpError(message);
+    }
   };
-  return { authenticateSignUp, signInUpError, authenticateSignIn };
+
+  const authStateChange = () => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // whenever the user sign in and sign up will get the user here
+        const { uid, email, displayName } = user;
+        dispatch(addUser({ uid: uid, email: email, displayName: displayName }));
+      } else {
+        // User is signed out
+        dispatch(removeUser());
+      }
+    });
+  };
+  return {
+    authStateChange,
+    authenticateSignUp,
+    signInUpError,
+    authenticateSignIn,
+  };
 };
 
 export default useAuthenticate;

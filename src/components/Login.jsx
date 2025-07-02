@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 // components
 import Input from "../ui/Input";
@@ -8,6 +10,9 @@ import Button from "../ui/Button";
 import useValidate from "../utils/hooks/useValidate";
 import useAuthenticate from "../utils/hooks/useAuthenticate";
 
+// store
+import { addUser } from "../utils/redux/slices/userSlice";
+
 const Login = () => {
   const [login, setLogin] = useState({
     username: "",
@@ -16,12 +21,14 @@ const Login = () => {
   });
   const [isLogin, setIsLogin] = useState(true);
   const [isHiddenPassword, setIsHiddenPassword] = useState(true);
+  const dispatch = useDispatch();
 
   const { errors, clearError, resetErrors, validateFields } =
     useValidate(isLogin);
 
   const { authenticateSignUp, signInUpError, authenticateSignIn } =
     useAuthenticate();
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setLogin({
@@ -52,10 +59,29 @@ const Login = () => {
 
     if (!isLogin) {
       // sign up authentication logic
-      authenticateSignUp(login.email, login.password);
+      const handleSignUp = async () => {
+        const user = await authenticateSignUp(
+          login.username,
+          login.email,
+          login.password
+        );
+        if (user?.uid) {
+          const { uid, email, displayName } = user;
+          dispatch(
+            addUser({ uid: uid, email: email, displayName: displayName })
+          );
+          navigate("/browse");
+        }
+      };
+      handleSignUp();
     } else {
       // sign in authentication logic
-      authenticateSignIn(login.email, login.password);
+      const handleSignIn = async () => {
+        const user = await authenticateSignIn(login.email, login.password);
+        if (user?.uid) navigate("/browse");
+      };
+
+      handleSignIn();
     }
 
     resetErrors();

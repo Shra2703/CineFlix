@@ -1,13 +1,17 @@
+import { useEffect } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { Provider } from "react-redux";
 
 // components
 import SignInOut from "./components/SignInOut";
 
-// redux store
-import appStore from "./utils/redux/appStore";
+// pages
+import Browse from "./pages/Browse";
+
+// hook
+import useAuthenticate from "./utils/hooks/useAuthenticate";
 
 function App() {
+  const { authStateChange } = useAuthenticate();
   const router = createBrowserRouter([
     {
       path: "/",
@@ -15,14 +19,18 @@ function App() {
     },
     {
       path: "/browse",
-      element: <h1>Browse</h1>,
+      element: <Browse />,
     },
   ]);
-  return (
-    <Provider store={appStore}>
-      <RouterProvider router={router} />
-    </Provider>
-  );
+
+
+  useEffect(() => {
+    // whenever the users sign in or signup then actions will be dispatched from the this function
+    authStateChange();
+  }, []);
+
+  return  <RouterProvider router={router} />;
+ 
 }
 
 export default App;
