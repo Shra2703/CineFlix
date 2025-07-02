@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 // components
@@ -28,7 +27,6 @@ const Login = () => {
 
   const { authenticateSignUp, signInUpError, authenticateSignIn } =
     useAuthenticate();
-  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setLogin({
@@ -70,18 +68,12 @@ const Login = () => {
           dispatch(
             addUser({ uid: uid, email: email, displayName: displayName })
           );
-          navigate("/browse");
         }
       };
       handleSignUp();
     } else {
       // sign in authentication logic
-      const handleSignIn = async () => {
-        const user = await authenticateSignIn(login.email, login.password);
-        if (user?.uid) navigate("/browse");
-      };
-
-      handleSignIn();
+      authenticateSignIn(login.email, login.password);
     }
 
     resetErrors();
@@ -99,49 +91,18 @@ const Login = () => {
         <h1 className="font-bold text-white text-4xl">
           {isLogin ? "Sign In" : "Sign Up"}
         </h1>
-        <form className="mt-10 flex flex-col gap-5" onSubmit={handleSubmit}>
-          {!isLogin && (
-            <Input
-              type="text"
-              placeholder="Name"
-              value={login.username}
-              name="username"
-              onChange={handleChange}
-              error={errors.username}
-              onBlur={() => validateFields(login, "username", login.username)}
-              onFocus={handleFocus}
-            />
-          )}
-          <Input
-            type="email"
-            placeholder="Email"
-            value={login.email}
-            name="email"
-            onChange={handleChange}
-            error={errors.email}
-            onBlur={() => validateFields(login, "email", login.email)}
-            onFocus={handleFocus}
-          />
-          <Input
-            type={isHiddenPassword ? "password" : "text"}
-            placeholder="Password"
-            value={login.password}
-            name="password"
-            onChange={handleChange}
-            error={errors.password}
-            onBlur={() => validateFields(login, "password", login.password)}
-            onFocus={handleFocus}
-            isHiddenPassword={isHiddenPassword}
-            togglePassword={setIsHiddenPassword}
-            showToggle={true}
-          />
-          <Button type="submit" label={isLogin ? "Sign In" : "Sign Up"} />
-          {signInUpError && (
-            <p className="text-red-500  font-medium text-sm mt-1 mx-2 transition-all duration-300">
-              {signInUpError}
-            </p>
-          )}
-        </form>
+        <Form
+          handleChange={handleChange}
+          handleFocus={handleFocus}
+          handleSubmit={handleSubmit}
+          login={login}
+          errors={errors}
+          signInUpError={signInUpError}
+          validateFields={validateFields}
+          setIsHiddenPassword={setIsHiddenPassword}
+          isLogin={isLogin}
+          isHiddenPassword={isHiddenPassword}
+        />
         <p className="p-5 text-gray-500 font-bold text-center text-xl">OR</p>
         <p className="text-base text-gray-500 text-center font-medium">
           {isLogin ? "New to Netflix? " : "Already have an account? "}
@@ -158,3 +119,62 @@ const Login = () => {
 };
 
 export default Login;
+
+const Form = ({
+  handleSubmit,
+  handleChange,
+  login,
+  handleFocus,
+  isLogin,
+  errors,
+  validateFields,
+  isHiddenPassword,
+  setIsHiddenPassword,
+  signInUpError,
+}) => {
+  return (
+    <form className="mt-10 flex flex-col gap-5" onSubmit={handleSubmit}>
+      {!isLogin && (
+        <Input
+          type="text"
+          placeholder="Name"
+          value={login.username}
+          name="username"
+          onChange={handleChange}
+          error={errors.username}
+          onBlur={() => validateFields(login, "username", login.username)}
+          onFocus={handleFocus}
+        />
+      )}
+      <Input
+        type="email"
+        placeholder="Email"
+        value={login.email}
+        name="email"
+        onChange={handleChange}
+        error={errors.email}
+        onBlur={() => validateFields(login, "email", login.email)}
+        onFocus={handleFocus}
+      />
+      <Input
+        type={isHiddenPassword ? "password" : "text"}
+        placeholder="Password"
+        value={login.password}
+        name="password"
+        onChange={handleChange}
+        error={errors.password}
+        onBlur={() => validateFields(login, "password", login.password)}
+        onFocus={handleFocus}
+        isHiddenPassword={isHiddenPassword}
+        togglePassword={setIsHiddenPassword}
+        showToggle={true}
+      />
+      <Button type="submit" label={isLogin ? "Sign In" : "Sign Up"} />
+      {signInUpError && (
+        <p className="text-red-500  font-medium text-sm mt-1 mx-2 transition-all duration-300">
+          {signInUpError}
+        </p>
+      )}
+    </form>
+  );
+};
