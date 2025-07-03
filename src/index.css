@@ -1,1 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Manufacturing+Consent&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
+
+@theme{
+    --font-consent: "Manufacturing Consent", system-ui;
+    --font-roboto:"Roboto", sans-serif;
+    --color-primary: #f0f0f0
+    
+}

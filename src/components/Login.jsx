@@ -86,8 +86,8 @@ const Login = () => {
     resetErrors();
   };
   return (
-    <div>
-      <div className="w-[30rem] h-auto bg-black/80 mx-auto px-16 py-7">
+    <div className="relative top-[15%]">
+      <div className="w-[30rem] h-auto bg-black/80 mx-auto px-16 py-7  ">
         <h1 className="font-bold text-white text-4xl">
           {isLogin ? "Sign In" : "Sign Up"}
         </h1>

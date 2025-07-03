@@ -28,12 +28,12 @@ const Header = () => {
     SignOut();
   };
   return (
-    <div className="px-28 pt-10 pb-5 bg-linear-to-b from-black flex justify-between">
-      <div className="w-xl">
+    <div className="px-10 py-2 bg-linear-to-b from-black flex justify-between items-center z-100 fixed top-0">
+      <div className="w-[20%]">
         <img
           src={LOGO_URL}
           alt="Netflix Logo"
-          className="w-[9rem] h-[2.5rem] object-contain"
+          className="w-1/2 h-auto p-0 object-cover ml-0"
         />
       </div>
 
