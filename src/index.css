@@ -8,3 +8,7 @@
     --color-primary: #f0f0f0
     
 }
+
+.slider::-webkit-scrollbar {
+    display: none;
+}

@@ -2,6 +2,8 @@ export const LOGO_URL = "https://help.nflxext.com/helpcenter/OneTrust/oneTrust_p
 
 export const BACKGROUND_IMG_URL = "https://assets.nflxext.com/ffe/siteui/vlv3/fa7be975-efc3-48c6-8188-f07fdd1aa476/web/IN-en-20250428-TRIFECTA-perspective_e045264e-b4d4-4a6f-b2cc-f95e3344a332_small.jpg";
 
+export const MOVIE_POSTER = "https://image.tmdb.org/t/p/w500/"
+
 export const API_OPTIONS = {
   method: 'GET',
   headers: {

@@ -6,7 +6,7 @@ const TitleContainer = ({ title = "Something", overview }) => {
   return (
     <div className="w-1/3 h-full min-h-[80vh] relative z-200 px-10 flex flex-col justify-center text-white gap-4 font-roboto">
       <div className="group">
-        <h1 className="font-consent text-8xl mt-14 cursor-pointer">{title}</h1>
+        <h1 className="font-consent text-8xl cursor-pointer">{title}</h1>
         <p className="opacity-0 max-h-0 group-hover:opacity-100 group-hover:max-h-40 transition-all duration-500 overflow-hidden">
           {overview}
         </p>
