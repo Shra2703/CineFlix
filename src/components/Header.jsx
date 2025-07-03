@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 // constants
@@ -12,23 +12,38 @@ import { useAuthStateChange } from "../utils/hooks/useAuthenticate";
 import useAuthenticate from "../utils/hooks/useAuthenticate";
 
 const Header = () => {
+  const [scrolled, setScrolled] = useState(false);
   const { authStateChange } = useAuthStateChange();
   const { SignOut } = useAuthenticate();
   const user = useSelector((state) => state.user);
 
   useEffect(() => {
-    // whenever the users sign in or signup then actions will be dispatched from the this function
-  const unsubscribe =  authStateChange();
+    // for scroll listener
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      console.log(scrollY);
+      setScrolled(scrollY > 500);
+    };
+    window.addEventListener("scroll", handleScroll);
 
-  // unsubscribe when components unmounts
-  return () => unsubscribe();
+    // Auth listener
+    const unsubscribe = authStateChange();
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      unsubscribe();
+    };
   }, []);
 
   const handleSignOut = () => {
     SignOut();
   };
   return (
-    <div className="px-10 py-2 bg-linear-to-b from-black flex justify-between items-center z-1000 fixed top-0">
+    <div
+      className={`px-10 py-2  flex justify-between items-center z-1000 fixed top-0 transition-all duration-300 ${
+        scrolled ? "bg-black" : "bg-linear-to-b from-black"
+      }`}
+    >
       <div className="w-[20%]">
         <img
           src={LOGO_URL}

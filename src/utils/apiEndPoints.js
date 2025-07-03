@@ -1,17 +1,33 @@
 export const getNowPlayingMoviesApi = () => {
-    return "https://api.themoviedb.org/3/movie/now_playing?page=1"
-}
+  return "https://api.themoviedb.org/3/movie/now_playing?page=1";
+};
 
 export const getPopularMoviesApi = () => {
-    return "https://api.themoviedb.org/3/movie/popular"
-}
+  return "https://api.themoviedb.org/3/movie/popular";
+};
 export const getTopRatedMoviesApi = () => {
-    return "https://api.themoviedb.org/3/movie/top_rated"
-}
+  return "https://api.themoviedb.org/3/movie/top_rated";
+};
 export const getUpcomingMoviesApi = () => {
-    return "https://api.themoviedb.org/3/movie/upcoming"
-}
+  return "https://api.themoviedb.org/3/movie/upcoming";
+};
+
+export const getArrivingTodayTvApi = () => {
+  return "https://api.themoviedb.org/3/tv/airing_today";
+};
+
+export const getPopularTvApi = () => {
+  return "https://api.themoviedb.org/3/tv/popular";
+};
+
+export const getOnTheAirTvApi = () => {
+  return "https://api.themoviedb.org/3/tv/on_the_air";
+};
+
+export const getTopRatedTvApi = () => {
+  return "https://api.themoviedb.org/3/tv/top_rated";
+};
 
 export const getTrailerVideoApi = (movieId) => {
-    return `https://api.themoviedb.org/3/movie/${movieId}/videos`
-}
+  return `https://api.themoviedb.org/3/movie/${movieId}/videos`;
+};

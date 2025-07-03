@@ -4,11 +4,11 @@ const MovieCard = ({ movie }) => {
    const {poster_path, title} = movie; 
   return (
     <div className="w-56 flex-shrink-0">
-      <div className="w-full h-full">
+      <div className="w-full h-full overflow-hidden rounded-sm">
         <img
           src={MOVIE_POSTER + poster_path}
           alt={title}
-          className="w-full h-full object-fit"
+          className="w-full h-full object-fit overflow-hidden"
         />
       </div>
     </div>
