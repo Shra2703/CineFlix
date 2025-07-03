@@ -1,7 +1,7 @@
 const s = 28;
 const l = 35;
 
-export function stringToHslColor(str) {
+export function stringToHslColor(str = "user") {
   var hash = 0;
   for (var i = 0; i < str?.length; i++) {
     hash = str.charCodeAt(i) + ((hash << 5) - hash);

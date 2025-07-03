@@ -1,10 +1,11 @@
-import React from "react";
-// import { useSelector } from "react-redux";
+// components
 import Header from "../components/Header";
 
+// hooks
+import useNowPlayingMovies from "../utils/hooks/useNowPlayingMovies";
+
 const Browse = () => {
-  // const store = useSelector((state) => state.user);
-  // console.log(store);
+  useNowPlayingMovies()
   return (
     <>
       <Header />

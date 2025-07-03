@@ -4,15 +4,15 @@ import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
   updateProfile,
-  signOut
+  signOut,
 } from "firebase/auth";
 
 import { auth } from "../firebase";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 // store
 import { addUser, removeUser } from "../redux/slices/userSlice";
-import { useNavigate } from "react-router-dom";
 
 const getErrorInString = (str) => {
   return str
@@ -76,7 +76,7 @@ export const useAuthStateChange = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const authStateChange = () => {
-    onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         // whenever the user sign in and sign up will get the user here
         const { uid, email, displayName } = user;
@@ -88,6 +88,8 @@ export const useAuthStateChange = () => {
         navigate("/");
       }
     });
+
+    return unsubscribe;
   };
 
   return { authStateChange };

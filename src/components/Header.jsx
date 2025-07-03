@@ -18,7 +18,10 @@ const Header = () => {
 
   useEffect(() => {
     // whenever the users sign in or signup then actions will be dispatched from the this function
-    authStateChange();
+  const unsubscribe =  authStateChange();
+
+  // unsubscribe when components unmounts
+  return () => unsubscribe();
   }, []);
 
   const handleSignOut = () => {
