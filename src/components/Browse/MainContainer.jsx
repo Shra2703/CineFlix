@@ -9,9 +9,9 @@ const MainContainer = () => {
 
   const nowPlayingMovie = movies[0];
   const { title, overview, id } = nowPlayingMovie;
-  console.log(nowPlayingMovie)
+ 
   return (
-    <main className="w-full border-black border  min-h-[80vh] relative">
+    <main className="w-full border-black border h-screen min-h-[80vh] relative">
       <VideoBackground movieId={id} title = {title}/>
       <TitleContainer title={title} overview={overview} />
     </main>
