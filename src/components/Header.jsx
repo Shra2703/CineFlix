@@ -21,7 +21,6 @@ const Header = () => {
     // for scroll listener
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      console.log(scrollY);
       setScrolled(scrollY > 500);
     };
     window.addEventListener("scroll", handleScroll);
