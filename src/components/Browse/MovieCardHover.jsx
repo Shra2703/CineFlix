@@ -9,7 +9,7 @@ const MovieCardHover = ({ movie }) => {
     return dateStr.split("-")[0];
   };
   return (
-    <div className="w-72 h-72 flex-shrink-0 bg-gray-800 rounded-lg border">
+    <div className="w-full h-72 flex-shrink-0 bg-gray-800 rounded-lg max-sm:h-64">
       <div className="w-full h-8/12 overflow-hidden rounded-t-lg relative">
         <img
           src={MOVIE_POSTER + backdrop_path}

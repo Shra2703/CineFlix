@@ -26,7 +26,7 @@ const SecondaryContainer = () => {
   ];
   return (
     <div className="w-full bg-black/50 text-white pb-11">
-      <div className="-mt-52 relative z-100">
+      <div className="-mt-52 relative z-100 max-lg:-mt-0">
         {sections.map((list, index) => (
           <MovieList
             title={list.title}

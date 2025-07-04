@@ -26,7 +26,7 @@ const Browse = () => {
   useArrivingTodayTv();
 
   return (
-    <div className="relative bg-black font-roboto h-full">
+    <div className="relative bg-black font-roboto h-full transition-all duration-700">
       <Header />
       <div className="flex flex-col relative ">
         <MainContainer />

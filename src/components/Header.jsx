@@ -43,7 +43,7 @@ const Header = () => {
         scrolled ? "bg-black" : "bg-linear-to-b from-black"
       }`}
     >
-      <div className="w-[20%]">
+      <div className="w-[20%] max-lg:w-[40%] max-sm:w-[60%]">
         <img
           src={LOGO_URL}
           alt="Netflix Logo"

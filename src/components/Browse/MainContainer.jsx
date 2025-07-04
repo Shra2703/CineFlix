@@ -11,7 +11,7 @@ const MainContainer = () => {
   const { title, overview, id } = nowPlayingMovie;
  
   return (
-    <main className="w-full border-black border h-screen min-h-[80vh] relative">
+    <main className="w-full border h-screen min-h-[80vh] relative max-sm:min-h-[60vh] max-sm:h-[60vh]">
       <VideoBackground movieId={id} title = {title}/>
       <TitleContainer title={title} overview={overview} />
     </main>
