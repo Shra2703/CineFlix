@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 // constants
 import { API_OPTIONS } from "../../../constanst";
@@ -12,6 +12,7 @@ import { getArrivingTodayTvApi } from "../../apiEndPoints";
 
 const useArrivingTodayTv = () => {
   const dispatch = useDispatch();
+  const arrivingToday = useSelector((store) => store.tv.arrivingTodayTv);
 
   const getArrivingToday = async () => {
     const data = await fetch(getArrivingTodayTvApi(), API_OPTIONS);
@@ -20,7 +21,7 @@ const useArrivingTodayTv = () => {
   };
 
   useEffect(() => {
-    getArrivingToday();
+    arrivingToday && getArrivingToday();
   }, []);
 };
 

@@ -2,7 +2,7 @@ import { MOVIE_POSTER } from "../../constanst";
 // components
 import MovieCardHover from "./MovieCardHover";
 
-const MovieCard = ({ movie }) => {
+const MovieCard = ({ movie, index }) => {
   const { poster_path, title, name } = movie;
 
   return (
@@ -14,10 +14,15 @@ const MovieCard = ({ movie }) => {
           className="w-full h-full object-fit overflow-hidden"
         />
       </div>
-      <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] right-3 w-72 z-50 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300 overflow-visible shadow-2xl shadow-black max-sm:w-56">
+      <div
+        className={`absolute  right-3 w-72 z-50 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300 overflow-visible shadow-2xl shadow-black max-sm:w-56 ${
+          index === 0
+            ? "top-0 left-0"
+            : "top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]"
+        }`}
+      >
         <MovieCardHover movie={movie} />
       </div>
-
     </div>
   );
 };

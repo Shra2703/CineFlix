@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 // constants
 import { API_OPTIONS } from "../../../constanst";
@@ -12,6 +12,7 @@ import { getOnTheAirTvApi } from "../../apiEndPoints";
 
 const useOnTheAirTv = () => {
   const dispatch = useDispatch();
+  const onTheAir = useSelector((store) => store.tv.onTheAirTv);
 
   const getOnTheAirTv = async () => {
     const data = await fetch(getOnTheAirTvApi(), API_OPTIONS);
@@ -20,7 +21,7 @@ const useOnTheAirTv = () => {
   };
 
   useEffect(() => {
-    getOnTheAirTv();
+   onTheAir && getOnTheAirTv();
   }, []);
 };
 

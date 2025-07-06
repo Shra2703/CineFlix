@@ -1,6 +1,5 @@
 import { Eye, EyeOff } from "lucide-react";
 
-
 const Input = ({
   type = "text",
   placeholder = "",
@@ -13,7 +12,9 @@ const Input = ({
   onFocus = () => {},
   isHiddenPassword = true,
   togglePassword = () => {},
-  showToggle = false
+  showToggle = false,
+  classname = "",
+  ref = null
 }) => {
   return (
     <div className="relative">
@@ -26,10 +27,17 @@ const Input = ({
         name={name}
         onBlur={onBlur}
         onFocus={onFocus}
-        className="w-full  px-5 py-3 rounded-md border border-[#ccc] text-white placeholder:text-gray-400 text-base focus:outline-none focus:ring-2 focus:ring-white/80 relative"
+        className={
+          "w-full  px-5 py-3 rounded-md border border-[#ccc] text-white placeholder:text-gray-400 text-base focus:outline-none focus:ring-2 focus:ring-white/80 relative " +
+          classname
+        }
+        ref={ref}
       />
       {showToggle && (
-        <span className="text-gray-500 absolute top-4 right-4 cursor-pointer" onClick={() => togglePassword(prev => !prev)}>
+        <span
+          className="text-gray-500 absolute top-4 right-4 cursor-pointer"
+          onClick={() => togglePassword((prev) => !prev)}
+        >
           {isHiddenPassword ? <EyeOff size={18} /> : <Eye size={18} />}
         </span>
       )}

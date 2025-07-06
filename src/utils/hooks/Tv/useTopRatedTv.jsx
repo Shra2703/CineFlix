@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 // constants
 import { API_OPTIONS } from "../../../constanst";
@@ -12,6 +12,7 @@ import { getTopRatedTvApi } from "../../apiEndPoints";
 
 const useTopRatedTv = () => {
   const dispatch = useDispatch();
+  const topRatedTv = useSelector((store) => store.tv.topRatedTv);
 
   const getTopRatedTv = async () => {
     const data = await fetch(getTopRatedTvApi(), API_OPTIONS);
@@ -20,7 +21,7 @@ const useTopRatedTv = () => {
   };
 
   useEffect(() => {
-    getTopRatedTv();
+   topRatedTv && getTopRatedTv();
   }, []);
 };
 

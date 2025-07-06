@@ -1,4 +1,3 @@
-import React from "react";
 import { BACKGROUND_IMG_URL } from "../constanst";
 import Header from "./Header";
 import Login from "./Login";
