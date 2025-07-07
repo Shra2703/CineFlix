@@ -18,6 +18,7 @@ import useTopRatedTv from "../utils/hooks/Tv/useTopRatedTv";
 
 const Browse = () => {
   const showGptSearch = useSelector((store) => store.gpt?.showSearch);
+  
 
   useNowPlayingMovies();
   usePopularMovies();

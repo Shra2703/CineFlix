@@ -1,3 +1,4 @@
+import SecondaryShimmer from "../ShimmerUi/SecondaryShimmer";
 import MovieList from "./MovieList";
 import { useSelector } from "react-redux";
 
@@ -13,6 +14,15 @@ const SecondaryContainer = () => {
   const onTheAirTv = useSelector((store) => store.tv?.onTheAirTv);
   const popularTv = useSelector((store) => store.tv?.popularTv);
   const topRatedTv = useSelector((store) => store.tv?.topRatedTv);
+
+  if(!nowPlayingMovies){
+    return (
+      <>
+        <SecondaryShimmer />
+        <SecondaryShimmer />
+      </>
+    )
+  }
 
   const sections = [
     { title: "Now Playing", movieList: nowPlayingMovies },
