@@ -87,7 +87,7 @@ const Login = () => {
   };
   return (
     <div className="relative top-[15%]">
-      <div className="w-[30rem] h-auto bg-black/80 mx-auto px-16 py-7  ">
+      <div className="w-1/3 h-auto bg-black/80 mx-auto px-16 py-7 max-lg:w-1/2 max-md:w-[85%] max-sm:px-8">
         <h1 className="font-bold text-white text-4xl">
           {isLogin ? "Sign In" : "Sign Up"}
         </h1>

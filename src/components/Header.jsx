@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 // constants
 import { LOGO_URL } from "../constanst";
@@ -55,11 +56,13 @@ const Header = () => {
       }`}
     >
       <div className="w-[20%] max-lg:w-[40%] max-sm:w-[60%]">
-        <img
-          src={LOGO_URL}
-          alt="Netflix Logo"
-          className="w-1/2 h-auto p-0 object-cover ml-0"
-        />
+        <Link to="/browse">
+          <img
+            src={LOGO_URL}
+            alt="Netflix Logo"
+            className="w-1/2 h-auto p-0 object-cover ml-0"
+          />
+        </Link>
       </div>
 
       {user && (

@@ -4,12 +4,12 @@ import { Info } from "lucide-react";
 
 const TitleContainer = ({ title = "Something", overview }) => {
   return (
-    <div className="w-1/3 h-full min-h-[80vh] relative z-200 px-10 flex flex-col justify-center text-white gap-4 font-roboto -mt-14 max-lg:-mt-0 max-sm:-mt-7">
+    <div className="w-1/2 h-full min-h-[80vh] relative z-200 px-10 flex flex-col justify-center text-white gap-4 font-roboto -mt-14 max-lg:-mt-0 max-sm:-mt-7 max-sm:w-[70%]">
       <div className="group">
-        <h1 className="font-consent text-8xl cursor-pointer max-sm:text-6xl">
+        <h1 className="font-consent text-7xl cursor-pointer max-sm:text-4xl">
           {title}
         </h1>
-        <p className="opacity-0 max-h-0 group-hover:opacity-100 group-hover:max-h-40 transition-all duration-500 overflow-hidden">
+        <p className="opacity-0 max-h-0 group-hover:opacity-100 group-hover:max-h-40 transition-all duration-500 overflow-hidden max-sm:max-h-20 max-sm:text-xs">
           {overview}
         </p>
       </div>

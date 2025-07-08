@@ -1,3 +1,5 @@
+// api end points for fetching movies and TV shows from The Movie Database (TMDB)
+
 export const getNowPlayingMoviesApi = () => {
   return "https://api.themoviedb.org/3/movie/now_playing?page=1";
 };
@@ -30,4 +32,9 @@ export const getTopRatedTvApi = () => {
 
 export const getTrailerVideoApi = (movieId) => {
   return `https://api.themoviedb.org/3/movie/${movieId}/videos`;
+};
+
+// api end point for fetching movie details
+export const getMovieDetailsApi = (movieId) => {
+  return `https://api.themoviedb.org/3/movie/${movieId}`;
 };

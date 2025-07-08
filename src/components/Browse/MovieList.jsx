@@ -2,6 +2,7 @@ import { ChevronRight } from "lucide-react";
 
 // components
 import MovieCard from "./MovieCard";
+import { Link } from "react-router-dom";
 
 const MovieList = ({ title, movieList }) => {
   return (
@@ -15,7 +16,9 @@ const MovieList = ({ title, movieList }) => {
 
        <div className="mt-5 flex overflow-x-auto scroll-smooth gap-4 w-full slider overflow-y-hidden">
         {movieList?.map((movie, index) => (
-          <MovieCard movie={movie} key={movie.id} index = {index} length = {movieList.length}/>
+          <Link to={`/browse/details/${movie.id}`} key={movie.id}>
+            <MovieCard movie={movie}  index={index} length={movieList.length} />
+          </Link>
         ))}
       </div> 
     </div>

@@ -9,7 +9,7 @@ const SignInOut = () => {
       style={{ backgroundImage: `url(${BACKGROUND_IMG_URL})` }}
     >
       <div className="w-full h-full bg-black/50 absolute top-0 left-0">
-        <Header />
+        {/* <Header /> */}
         <Login />
       </div>
     </div>
