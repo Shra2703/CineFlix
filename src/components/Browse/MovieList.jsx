@@ -15,7 +15,7 @@ const MovieList = ({ title, movieList }) => {
 
        <div className="mt-5 flex overflow-x-auto scroll-smooth gap-4 w-full slider overflow-y-hidden">
         {movieList?.map((movie, index) => (
-          <MovieCard movie={movie} key={movie.id} index = {index} />
+          <MovieCard movie={movie} key={movie.id} index = {index} length = {movieList.length}/>
         ))}
       </div> 
     </div>

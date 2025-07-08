@@ -2,7 +2,7 @@ import { MOVIE_POSTER } from "../../constanst";
 // components
 import MovieCardHover from "./MovieCardHover";
 
-const MovieCard = ({ movie, index }) => {
+const MovieCard = ({ movie, index, length }) => {
   const { poster_path, title, name } = movie;
 
   return (
@@ -19,7 +19,7 @@ const MovieCard = ({ movie, index }) => {
           index === 0
             ? "top-0 left-0"
             : "top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]"
-        }`}
+        } ${index === length-1 ? "top-0 right-0" : ""}`}
       >
         <MovieCardHover movie={movie} />
       </div>

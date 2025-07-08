@@ -24,6 +24,8 @@ const SecondaryContainer = () => {
     )
   }
 
+ 
+
   const sections = [
     { title: "Now Playing", movieList: nowPlayingMovies },
     { title: "Popular Movies", movieList: popularMovies },

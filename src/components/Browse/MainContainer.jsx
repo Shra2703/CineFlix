@@ -1,13 +1,13 @@
-import { Headphones } from "lucide-react";
+import { useSelector } from "react-redux";
 
 // components
 import VideoBackground from "./VideoBackground";
 import TitleContainer from "./TitleContainer";
-import { useSelector } from "react-redux";
+import MainContainerShimmer from "../ShimmerUi/MainContainerShimmer";
 
 const MainContainer = () => {
   const movies = useSelector((store) => store.movies?.nowPlayingMovies);
-  if (!movies) return;
+  if (!movies) return <MainContainerShimmer />;
 
   const nowPlayingMovie = movies[0];
   const { title, overview, id } = nowPlayingMovie;

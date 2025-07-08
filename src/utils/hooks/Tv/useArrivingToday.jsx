@@ -21,7 +21,7 @@ const useArrivingTodayTv = () => {
   };
 
   useEffect(() => {
-    arrivingToday && getArrivingToday();
+    !arrivingToday && getArrivingToday();
   }, []);
 };
 

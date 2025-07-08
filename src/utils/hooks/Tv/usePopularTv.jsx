@@ -21,7 +21,7 @@ const usePopularTv = () => {
   };
 
   useEffect(() => {
-    popularTv && getPopularTv();
+    !popularTv && getPopularTv();
   }, []);
 };
 

@@ -21,7 +21,7 @@ const useOnTheAirTv = () => {
   };
 
   useEffect(() => {
-   onTheAir && getOnTheAirTv();
+   !onTheAir && getOnTheAirTv();
   }, []);
 };
 

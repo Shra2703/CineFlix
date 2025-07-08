@@ -21,7 +21,7 @@ const useTopRatedTv = () => {
   };
 
   useEffect(() => {
-   topRatedTv && getTopRatedTv();
+   !topRatedTv && getTopRatedTv();
   }, []);
 };
 
