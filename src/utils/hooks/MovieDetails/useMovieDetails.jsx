@@ -24,7 +24,6 @@ const useMovieDetails = (id, type) => {
       data = await fetch(getTvDetailsApi(id), API_OPTIONS);
     }
     const details = await data.json();
-    console.log(details);
     dispatch(addMovieDetails(details));
   };
 

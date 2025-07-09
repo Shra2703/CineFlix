@@ -1,4 +1,6 @@
 import { useSelector } from "react-redux";
+import { Play } from "lucide-react";
+import Button from "../../ui/Button";
 
 const DescriptionContainer = () => {
   const details = useSelector((store) => store.movies?.movieDetails);
@@ -32,6 +34,13 @@ const DescriptionContainer = () => {
       </div>
       <p className="text-justify">{overview}</p>
       <Genres genres={genres} />
+
+      <Button
+        label="Watch Now"
+        showIcon={true}
+        Icon={<Play />}
+        classname="mt-4 bg-white !text-black hover:bg-white/70"
+      />
     </div>
   );
 };

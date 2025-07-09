@@ -1,7 +1,7 @@
 // api end points for fetching movies and TV shows from The Movie Database (TMDB)
 
 export const getNowPlayingMoviesApi = () => {
-  return "https://api.themoviedb.org/3/movie/now_playing?page=1";
+  return "https://api.themoviedb.org/3/movie/now_playing?page=1&with_origin_country=IN";
 };
 
 export const getPopularMoviesApi = () => {
@@ -41,4 +41,19 @@ export const getMovieDetailsApi = (movieId) => {
 
 export const getTvDetailsApi = (tvId) => {
   return `https://api.themoviedb.org/3/tv/${tvId}`;
+};
+
+export const getMovieVideosApi = (movieId) => {
+  return `https://api.themoviedb.org/3/movie/${movieId}/videos`;
+};
+
+export const getTvVideosApi = (tvId) => {
+  return `https://api.themoviedb.org/3/tv/${tvId}/videos`;
+};
+
+export const getMovieRecommendationsApi = (movieId) => {
+  return `https://api.themoviedb.org/3/movie/${movieId}/recommendations`;
+};
+export const getTvRecommendationsApi = (tvId) => {
+  return `https://api.themoviedb.org/3/tv/${tvId}/recommendations`;
 };
