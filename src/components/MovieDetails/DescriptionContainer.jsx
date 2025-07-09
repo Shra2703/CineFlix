@@ -2,6 +2,8 @@ import { useSelector } from "react-redux";
 
 const DescriptionContainer = () => {
   const details = useSelector((store) => store.movies?.movieDetails);
+  if (!details) return;
+
   const {
     original_title,
     genres,
@@ -10,14 +12,17 @@ const DescriptionContainer = () => {
     spoken_languages,
     title,
     origin_country,
+    original_name,
+    first_air_date,
+    name,
   } = details || {};
   return (
     <div className="w-1/3 h-full relative z-200 px-10 flex flex-col justify-center text-white gap-4 font-roboto">
       <h1 className="font-consent text-6xl cursor-pointer max-sm:text-4xl text-nowrap">
-        {title || original_title}
+        {title || original_title || name || original_name}
       </h1>
       <div className="flex gap-0 font-medium text-xl items-center">
-        {release_date?.split("-")[0]}
+        {release_date?.split("-")[0] || first_air_date?.split("-")[0]}
         <div className="w-1.5  h-1.5 bg-gray-500 mx-3 rounded-full"></div>
 
         <Languages languages={spoken_languages} />
@@ -58,7 +63,7 @@ const Genres = ({ genres }) => {
   return (
     <Layout>
       {genres?.map((genre, index) => (
-        <span key={genre.id}>
+        <span key={genre.id} className="text-nowrap">
           {genre.name}
           {index != genres.length - 1 && <span className="mx-3">|</span>}
         </span>

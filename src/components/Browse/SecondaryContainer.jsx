@@ -15,22 +15,23 @@ const SecondaryContainer = () => {
   const popularTv = useSelector((store) => store.tv?.popularTv);
   const topRatedTv = useSelector((store) => store.tv?.topRatedTv);
 
-  if(!nowPlayingMovies){
+  if (!nowPlayingMovies) {
     return (
       <>
         <SecondaryShimmer />
         <SecondaryShimmer />
       </>
-    )
+    );
   }
 
- 
-
-  const sections = [
+  const sectionsMovies = [
     { title: "Now Playing", movieList: nowPlayingMovies },
     { title: "Popular Movies", movieList: popularMovies },
     { title: "Top Rated Movies", movieList: topRatedMovies },
     { title: "Upcoming Movies", movieList: upcomingMovies },
+  ];
+
+  const sectionsShows = [
     { title: "Latest Shows", movieList: arrivingTodayTv },
     { title: "On The Shows", movieList: onTheAirTv },
     { title: "Popular Shows", movieList: popularTv },
@@ -39,16 +40,31 @@ const SecondaryContainer = () => {
   return (
     <div className="w-full bg-black/50 text-white pb-11">
       <div className="-mt-52 relative z-100 max-lg:-mt-0">
-        {sections.map((list, index) => (
-          <MovieList
-            title={list.title}
-            movieList={list.movieList}
-            key={index}
-          />
-        ))}
+        <SecondaryMovieContainer sections={sectionsMovies} />
+        <SecondaryShowsContainer sections={sectionsShows} />
       </div>
     </div>
   );
 };
 
 export default SecondaryContainer;
+
+const SecondaryMovieContainer = ({ sections }) => {
+  return (
+    <>
+      {sections.map((list, index) => (
+        <MovieList title={list.title} movieList={list.movieList} key={index} type = "movies" />
+      ))}
+    </>
+  );
+};
+
+const SecondaryShowsContainer = ({ sections }) => {
+  return (
+    <>
+      {sections.map((list, index) => (
+        <MovieList title={list.title} movieList={list.movieList} key={index} type = "shows"/>
+      ))}
+    </>
+  );
+};

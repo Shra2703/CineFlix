@@ -31,7 +31,11 @@ function App() {
           element: <Browse />,
         },
         {
-          path: "browse/details/:id",
+          path: "/browse/details-movies/:id",
+          element: <MovieDetails />,
+        },
+        {
+          path: "/browse/details-shows/:id",
           element: <MovieDetails />,
         },
       ],

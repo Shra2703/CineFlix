@@ -38,3 +38,7 @@ export const getTrailerVideoApi = (movieId) => {
 export const getMovieDetailsApi = (movieId) => {
   return `https://api.themoviedb.org/3/movie/${movieId}`;
 };
+
+export const getTvDetailsApi = (tvId) => {
+  return `https://api.themoviedb.org/3/tv/${tvId}`;
+};

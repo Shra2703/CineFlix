@@ -11,13 +11,18 @@ import {
 } from "../../redux/slices/movieSlice";
 
 // api endpoint
-import { getMovieDetailsApi } from "../../apiEndPoints";
+import { getMovieDetailsApi, getTvDetailsApi } from "../../apiEndPoints";
 
-const useMovieDetails = (id) => {
+const useMovieDetails = (id, type) => {
   const dispatch = useDispatch();
 
   const getMovieDetails = async () => {
-    const data = await fetch(getMovieDetailsApi(id), API_OPTIONS);
+    let data = null;
+    if (type === "movies") {
+      data = await fetch(getMovieDetailsApi(id), API_OPTIONS);
+    } else {
+      data = await fetch(getTvDetailsApi(id), API_OPTIONS);
+    }
     const details = await data.json();
     console.log(details);
     dispatch(addMovieDetails(details));
