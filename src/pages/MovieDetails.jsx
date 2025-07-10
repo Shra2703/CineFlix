@@ -19,7 +19,7 @@ const MovieDetails = () => {
   useMovieRecommendation(id, type)
 
   return (
-    <div className="relative bg-black font-roboto h-full transition-all duration-400 flex flex-col">
+    <div className="relative bg-black font-roboto h-full transition-all duration-400 flex flex-col overflow-y-hidden">
       <MainDetailsContainer />
       <SecondaryDetailsContainer type = {type}/>
     </div>

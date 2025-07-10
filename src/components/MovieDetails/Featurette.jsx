@@ -32,29 +32,40 @@ const Featurette = ({ feature }) => {
 
 export default Featurette;
 
-const FeaturetteCard = ({ item, overview, imageUrl }) => {
-  console.log(item);
-
-  // iso_639_1
+export const FeaturetteCard = ({
+  item,
+  overview = "",
+  imageUrl,
+  classname = "flex-row",
+  imageClass = "",
+  paraClass = ""
+}) => {
 
   return (
-    <div className="w-[90%] h-52 bg-black/20 flex px-4 py-3 rounded ">
-      <div className="w-1/3 h-full rounded-2xl mr-4 relative shadow border border-gray-50">
+    <div
+      className={"w-[90%] h-52 bg-black/20 flex px-4 py-3 rounded " + classname}
+    >
+      <div
+        className={
+          "w-1/3 h-full rounded-2xl mr-4 relative shadow border border-gray-50 " +
+          imageClass
+        }
+      >
         <img
           src={MOVIE_POSTER + imageUrl}
           alt={item.name}
           className="w-full h-full overflow-hidden rounded-2xl object-cover"
         />
-        <Play className="absolute bottom-2 right-2" />
+        <Play className="absolute bottom-2 right-2" fill="white"/>
       </div>
-      <div className="flex flex-col gap-3 mt-3 w-2/3 text-gray-300">
-        <p className="text-3xl font-consent text-white">{item.name}</p>
+      <div className={"flex flex-col gap-3 mt-3 w-2/3 text-gray-300 " + paraClass}>
+        <p className="text-3xl font-consent text-white truncate">{item.name}</p>
         <div className="font-medium uppercase flex items-center">
           <p>{getReleaseYear(item.published_at)}</p>
           <RoundedDivider />
           <p>{item.iso_639_1}</p>
         </div>
-        <p className="-mt-1 line-clamp-3">{overview}</p>
+        {overview && <p className="-mt-1 line-clamp-2">{overview}</p>}
       </div>
     </div>
   );
