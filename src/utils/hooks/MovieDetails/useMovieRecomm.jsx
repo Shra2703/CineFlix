@@ -21,7 +21,6 @@ const useMovieRecommendation = (id, type) => {
       data = await fetch(getTvRecommendationsApi(id), API_OPTIONS);
     }
     const recommendations = await data.json();
-    console.log(recommendations)
     dispatch(addMovieRecommendations(recommendations.results));
   };
 

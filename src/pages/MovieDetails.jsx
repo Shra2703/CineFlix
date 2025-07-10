@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
 // hooks
@@ -22,6 +22,7 @@ const MovieDetails = () => {
     <div className="relative bg-black font-roboto h-full transition-all duration-400 flex flex-col overflow-y-hidden">
       <MainDetailsContainer />
       <SecondaryDetailsContainer type = {type}/>
+      <Outlet />
     </div>
   );
 };

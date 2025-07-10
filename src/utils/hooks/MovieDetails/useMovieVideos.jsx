@@ -21,7 +21,6 @@ const useMovieVideos = (id, type) => {
       data = await fetch(getTvVideosApi(id), API_OPTIONS);
     }
     const videos = await data.json();
-    console.log(videos)
     dispatch(addMovieVideos(videos.results));
   };
 

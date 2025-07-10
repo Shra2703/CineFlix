@@ -1,14 +1,12 @@
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import { RouterProvider, Outlet } from "react-router-dom";
 
 // components
-import SignInOut from "./components/SignInOut";
 import Header from "./components/Header";
 
-// pages
-import Browse from "./pages/Browse";
-import MovieDetails from "./pages/MovieDetails";
+// hooks
+import useRoutes from "./utils/hooks/useRoutes";
 
-const AppLayout = () => {
+export const AppLayout = () => {
   return (
     <>
       <Header />
@@ -17,31 +15,7 @@ const AppLayout = () => {
   );
 };
 function App() {
-  const routerProvider = createBrowserRouter([
-    {
-      path: "/",
-      element: <AppLayout />,
-      children: [
-        {
-          path: "/",
-          element: <SignInOut />,
-        },
-        {
-          path: "/browse",
-          element: <Browse />,
-        },
-        {
-          path: "/browse/details-movies/:id",
-          element: <MovieDetails />,
-        },
-        {
-          path: "/browse/details-shows/:id",
-          element: <MovieDetails />,
-        },
-      ],
-    },
-  ]);
-
+  const routerProvider = useRoutes();
   return <RouterProvider router={routerProvider} />;
 }
 

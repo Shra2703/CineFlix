@@ -1,11 +1,13 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const Tabs = ({ tabs, classname = "" }) => {
+  const firstAvailableTab = tabs.find((tab) => tab.obj?.length !== 0);
+  const [activeTab, setActiveTab] = useState(firstAvailableTab?.id);
   const handleScroll = (id) => {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: "smooth", block: "start" });
+      setActiveTab(id);
     }
   };
   return (
@@ -20,7 +22,9 @@ const Tabs = ({ tabs, classname = "" }) => {
           (tab, index) =>
             tab.obj?.length !== 0 && (
               <span
-                className="cursor-pointer hover:text-white transition-all duration-500"
+                className={`cursor-pointer hover:text-white transition-all duration-500 ${
+                  activeTab === tab.id && "text-white"
+                }`}
                 onClick={() => handleScroll(tab.id)}
                 key={index}
               >

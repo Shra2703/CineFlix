@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { Play } from "lucide-react";
+import { Link } from "react-router-dom";
 
 // constants
 import { MOVIE_POSTER } from "../../constanst";
@@ -18,12 +19,13 @@ const Featurette = ({ feature }) => {
     <div>
       <div className="grid grid-cols-1 gap-4">
         {feature.slice(0, 3).map((item, index) => (
-          <FeaturetteCard
-            key={index}
-            item={item}
-            imageUrl={backdrop_path}
-            overview={overview}
-          />
+          <Link to={`video/${item.key}`} key={index}>
+            <FeaturetteCard
+              item={item}
+              imageUrl={backdrop_path}
+              overview={overview}
+            />
+          </Link>
         ))}
       </div>
     </div>
@@ -38,9 +40,8 @@ export const FeaturetteCard = ({
   imageUrl,
   classname = "flex-row",
   imageClass = "",
-  paraClass = ""
+  paraClass = "",
 }) => {
-
   return (
     <div
       className={"w-[90%] h-52 bg-black/20 flex px-4 py-3 rounded " + classname}
@@ -56,9 +57,11 @@ export const FeaturetteCard = ({
           alt={item.name}
           className="w-full h-full overflow-hidden rounded-2xl object-cover"
         />
-        <Play className="absolute bottom-2 right-2" fill="white"/>
+        <Play className="absolute bottom-2 right-2" fill="white" />
       </div>
-      <div className={"flex flex-col gap-3 mt-3 w-2/3 text-gray-300 " + paraClass}>
+      <div
+        className={"flex flex-col gap-3 mt-3 w-2/3 text-gray-300 " + paraClass}
+      >
         <p className="text-3xl font-consent text-white truncate">{item.name}</p>
         <div className="font-medium uppercase flex items-center">
           <p>{getReleaseYear(item.published_at)}</p>
