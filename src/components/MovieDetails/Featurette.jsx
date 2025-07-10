@@ -1,0 +1,61 @@
+import { useSelector } from "react-redux";
+import { Play } from "lucide-react";
+
+// constants
+import { MOVIE_POSTER } from "../../constanst";
+import RoundedDivider from "../../ui/RoudedDivide";
+
+const getReleaseYear = (dateStr) => {
+  return dateStr.split("T")[0].split("-")[0];
+};
+
+const Featurette = ({ feature }) => {
+  const details = useSelector((store) => store.movies?.movieDetails);
+  if (!details) return;
+  const { backdrop_path, overview } = details || {};
+
+  return (
+    <div>
+      <div className="grid grid-cols-1 gap-4">
+        {feature.slice(0, 3).map((item, index) => (
+          <FeaturetteCard
+            key={index}
+            item={item}
+            imageUrl={backdrop_path}
+            overview={overview}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default Featurette;
+
+const FeaturetteCard = ({ item, overview, imageUrl }) => {
+  console.log(item);
+
+  // iso_639_1
+
+  return (
+    <div className="w-[90%] h-52 bg-black/20 flex px-4 py-3 rounded ">
+      <div className="w-1/3 h-full rounded-2xl mr-4 relative shadow border border-gray-50">
+        <img
+          src={MOVIE_POSTER + imageUrl}
+          alt={item.name}
+          className="w-full h-full overflow-hidden rounded-2xl object-cover"
+        />
+        <Play className="absolute bottom-2 right-2" />
+      </div>
+      <div className="flex flex-col gap-3 mt-3 w-2/3 text-gray-300">
+        <p className="text-3xl font-consent text-white">{item.name}</p>
+        <div className="font-medium uppercase flex items-center">
+          <p>{getReleaseYear(item.published_at)}</p>
+          <RoundedDivider />
+          <p>{item.iso_639_1}</p>
+        </div>
+        <p className="-mt-1 line-clamp-3">{overview}</p>
+      </div>
+    </div>
+  );
+};

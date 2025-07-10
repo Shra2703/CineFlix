@@ -21,12 +21,13 @@ const useMovieVideos = (id, type) => {
       data = await fetch(getTvVideosApi(id), API_OPTIONS);
     }
     const videos = await data.json();
-    dispatch(addMovieVideos(videos));
+    console.log(videos)
+    dispatch(addMovieVideos(videos.results));
   };
 
   useEffect(() => {
     getMovieVideos();
-  }, []);
+  }, [id]);
 };
 
 export default useMovieVideos;

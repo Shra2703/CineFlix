@@ -6,7 +6,7 @@ const MovieCardHover = ({ movie }) => {
     movie;
 
   const getYearFromDate = (dateStr) => {
-    return dateStr.split("-")[0];
+    return dateStr?.split("-")[0];
   };
   return (
     <div className="w-full h-72 flex-shrink-0 bg-gray-800 rounded-lg max-sm:h-52">

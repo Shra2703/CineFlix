@@ -1,6 +1,9 @@
 import { useSelector } from "react-redux";
 import { Play } from "lucide-react";
+
+// components
 import Button from "../../ui/Button";
+import RoundedDivider from "../../ui/RoudedDivide";
 
 const DescriptionContainer = () => {
   const details = useSelector((store) => store.movies?.movieDetails);
@@ -25,11 +28,11 @@ const DescriptionContainer = () => {
       </h1>
       <div className="flex gap-0 font-medium text-xl items-center">
         {release_date?.split("-")[0] || first_air_date?.split("-")[0]}
-        <div className="w-1.5  h-1.5 bg-gray-500 mx-3 rounded-full"></div>
+        <RoundedDivider />
 
         <Languages languages={spoken_languages} />
 
-        <div className="w-1.5  h-1.5 bg-gray-500 mx-3 rounded-full"></div>
+        <RoundedDivider />
         <Countries country={origin_country} />
       </div>
       <p className="text-justify">{overview}</p>

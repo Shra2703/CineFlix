@@ -22,12 +22,12 @@ const useMovieRecommendation = (id, type) => {
     }
     const recommendations = await data.json();
     console.log(recommendations)
-    dispatch(addMovieRecommendations(recommendations));
+    dispatch(addMovieRecommendations(recommendations.results));
   };
 
   useEffect(() => {
     getMovieRecommendations();
-  }, []);
+  }, [id]);
 };
 
 export default useMovieRecommendation;

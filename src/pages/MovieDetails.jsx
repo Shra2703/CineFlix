@@ -21,7 +21,7 @@ const MovieDetails = () => {
   return (
     <div className="relative bg-black font-roboto h-full transition-all duration-400 flex flex-col">
       <MainDetailsContainer />
-      <SecondaryDetailsContainer />
+      <SecondaryDetailsContainer type = {type}/>
     </div>
   );
 };
