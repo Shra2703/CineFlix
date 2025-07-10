@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { Play } from "lucide-react";
+import { Link } from "react-router-dom";
 
 // components
 import Button from "../../ui/Button";
@@ -7,6 +8,7 @@ import RoundedDivider from "../../ui/RoudedDivide";
 
 const DescriptionContainer = () => {
   const details = useSelector((store) => store.movies?.movieDetails);
+  const videos = useSelector((store) => store.movies?.movieVideos);
   if (!details) return;
 
   const {
@@ -38,12 +40,16 @@ const DescriptionContainer = () => {
       <p className="text-justify">{overview}</p>
       <Genres genres={genres} />
 
-      <Button
-        label="Watch Now"
-        showIcon={true}
-        Icon={<Play />}
-        classname="mt-4 bg-white !text-black hover:bg-white/70"
-      />
+      {videos.length > 0 && (
+        <Link to={`video/${videos[0].key}`}>
+          <Button
+            label="Watch Now"
+            showIcon={true}
+            Icon={<Play />}
+            classname="mt-4 bg-white !text-black hover:bg-white/70"
+          />
+        </Link>
+      )}
     </div>
   );
 };

@@ -15,7 +15,7 @@ const MainContainer = () => {
   return (
     <main className="w-full text-white h-screen min-h-[80vh] relative max-sm:min-h-[60vh] max-sm:h-[60vh]">
       <VideoBackground movieId={id} title = {title}/>
-      <TitleContainer title={title} overview={overview} />
+      <TitleContainer title={title} overview={overview} id = {id}/>
     </main>
   );
 };
