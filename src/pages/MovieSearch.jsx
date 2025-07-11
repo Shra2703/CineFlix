@@ -23,7 +23,7 @@ const MovieSearch = () => {
         <div className=" w-full flex flex-wrap gap-6 justify-start mb-12">
           {searchResults.length === 0 ? (
             <h1 className="text-white w-full h-full relative font-consent text-6xl flex items-center justify-center pt-36">
-             😲 No Search Found!!!
+              😲 No Search Found!!!
             </h1>
           ) : (
             searchResults?.map(
