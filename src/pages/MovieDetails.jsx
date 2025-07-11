@@ -3,9 +3,9 @@ import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 // hooks
-import useMovieDetails from "../utils/hooks/MovieDetails/useMovieDetails";
-import useMovieVideos from "../utils/hooks/MovieDetails/useMovieVideos";
-import useMovieRecommendation from "../utils/hooks/MovieDetails/useMovieRecomm";
+import useMovieVideos from "../utils/hooks/RTK/MovieDetails/useMovieVideos";
+import useMovieRecommendation from "../utils/hooks/RTK/MovieDetails/useMovieRecomm";
+import useMovieDetails from "../utils/hooks/RTK/MovieDetails/useMovieDetails";
 
 // components
 import MainDetailsContainer from "../components/MovieDetails/MainDetailsContainer";
@@ -15,7 +15,6 @@ const MovieDetails = () => {
   const { pathname } = useLocation();
   const type = pathname.split("/")[2].split("-")[1];
   const { id } = useParams();
-  // const details = useSelector((store) => store.movies?.movieDetails);
   const error = useSelector((store) => store.error?.errorMessage);
   useMovieDetails(id, type);
   useMovieVideos(id, type);
@@ -23,7 +22,9 @@ const MovieDetails = () => {
 
   if (error)
     return (
-      <h1 className="text-white w-full h-screen bg-black relative font-consent text-6xl flex items-center justify-center">{error}</h1>
+      <h1 className="text-white w-full h-screen bg-black relative font-consent text-6xl flex items-center justify-center">
+        {error}
+      </h1>
     );
 
   return (

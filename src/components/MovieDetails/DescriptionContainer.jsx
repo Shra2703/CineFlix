@@ -46,7 +46,7 @@ const DescriptionContainer = () => {
             label="Watch Now"
             showIcon={true}
             Icon={<Play />}
-            classname="mt-4 bg-white !text-black hover:bg-white/70"
+            classname="mt-4 bg-white !text-black hover:bg-white/70 !w-1/2"
           />
         </Link>
       )}
