@@ -17,8 +17,8 @@ const Featurette = ({ feature }) => {
 
   return (
     <div>
-      <div className="grid grid-cols-1 gap-4">
-        {feature.slice(0, 3).map((item, index) => (
+      <div className="grid grid-cols-1 gap-4 overflow-y-auto scroll-smooth w-full slider overflow-x-hidden pt-2.5">
+        {feature.slice(0,4).map((item, index) => (
           <Link to={`video/${item.key}`} key={index}>
             <FeaturetteCard
               item={item}

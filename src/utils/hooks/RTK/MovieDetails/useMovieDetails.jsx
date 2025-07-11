@@ -35,7 +35,7 @@ const useMovieDetails = (id, type) => {
     }
   };
 
-  const { data, error } = useQuery({
+  const { data, error, isPending } = useQuery({
     queryKey: ["movieDetails", id],
     queryFn: fetchMovieDetails,
     staleTime: 1000 * 60 * 5,
@@ -51,6 +51,8 @@ const useMovieDetails = (id, type) => {
       dispatch(addMovieDetails(data));
     }
   }, [data, id]);
+
+  return { isPending };
 };
 
 export default useMovieDetails;

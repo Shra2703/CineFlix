@@ -1,7 +1,10 @@
 import { useParams } from "react-router-dom";
 
+
 const Videos = () => {
-  const { videoId } = useParams();
+
+  const {videoId } = useParams();
+
   return (
     <div className="h-screen w-full bg-black text-white flex items-center justify-center p-20">
       <iframe

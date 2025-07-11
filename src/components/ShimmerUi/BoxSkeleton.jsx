@@ -5,5 +5,3 @@ const BoxSkeleton = ({ classname = "" }) => {
 };
 
 export default BoxSkeleton;
-
-//  w-[30%] h-60

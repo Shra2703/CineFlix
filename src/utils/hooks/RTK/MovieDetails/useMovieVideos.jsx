@@ -14,32 +14,7 @@ import { useQuery } from "@tanstack/react-query";
 
 const useMovieVideos = (id, type) => {
   const dispatch = useDispatch();
-  // const getMovieVideos = async () => {
-  //   try {
-  //     let response;
-  //     if (type === "movies") {
-  //       response = await fetch(getMovieVideosApi(id), API_OPTIONS);
-  //     } else {
-  //       response = await fetch(getTvVideosApi(id), API_OPTIONS);
-  //     }
-
-  //     if (!response.ok) {
-  //       throw new Error(
-  //         `Failed to fetch videos: ${response.status} ${response.statusText}`
-  //       );
-  //     }
-
-  //     const videos = await response.json();
-  //     if (videos?.results) {
-  //       dispatch(addMovieVideos(videos.results));
-  //     } else {
-  //       console.warn("No video results found.");
-  //     }
-  //   } catch (error) {
-  //     // console.error("Error fetching movie/TV videos:", error.message);
-  //     dispatch(setError(error.message));
-  //   }
-  // };
+  
 
   const fetchMovieVideos = async () => {
     try {
@@ -57,7 +32,7 @@ const useMovieVideos = (id, type) => {
     }
   };
 
-  const { data, error } = useQuery({
+  const { data, error, isPending, isSuccess } = useQuery({
     queryKey: ["movieVideos", id],
     queryFn: fetchMovieVideos,
     staleTime: 1000 * 5 * 60,
@@ -65,13 +40,15 @@ const useMovieVideos = (id, type) => {
 
   useEffect(() => {
     if (error) {
-      setError(error);
+      dispatch(setError(error));
     }
-    if (data) {
+    if (data && isSuccess) {
       dispatch(clearError());
       dispatch(addMovieVideos(data));
     }
   }, [id, data]);
+
+  return { isPending };
 };
 
 export default useMovieVideos;
