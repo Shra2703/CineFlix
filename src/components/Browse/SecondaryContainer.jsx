@@ -33,7 +33,7 @@ const SecondaryContainer = () => {
 
   const sectionsShows = [
     { title: "Latest Shows", movieList: arrivingTodayTv },
-    { title: "On The Shows", movieList: onTheAirTv },
+    { title: "On The Air Shows", movieList: onTheAirTv },
     { title: "Popular Shows", movieList: popularTv },
     { title: "Top Rated Shows", movieList: topRatedTv },
   ];
