@@ -14,7 +14,7 @@ const MovieList = ({ title, movieList, type, classname = "pl-10" }) => {
         </span>
       </h1>
 
-      <div className="mt-5 flex overflow-x-auto scroll-smooth gap-4 w-full slider overflow-y-hidden">
+      <div className="mt-5 flex overflow-x-auto scroll-smooth gap-4 w-full slider overflow-y-hidden items-center">
         {movieList?.map((movie, index) =>
           type === "movies"
             ? movie?.poster_path &&

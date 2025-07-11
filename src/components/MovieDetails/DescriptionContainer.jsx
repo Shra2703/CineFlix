@@ -24,8 +24,8 @@ const DescriptionContainer = () => {
     name,
   } = details || {};
   return (
-    <div className="w-1/3 h-full relative z-200 px-10 flex flex-col justify-center text-white gap-4 font-roboto">
-      <h1 className="font-consent text-6xl cursor-pointer max-sm:text-4xl text-nowrap">
+    <div className="w-1/2 h-full relative z-200 px-10 flex flex-col justify-center text-white gap-4 font-roboto ">
+      <h1 className="font-consent text-6xl cursor-pointer max-sm:text-4xl ">
         {title || original_title || name || original_name}
       </h1>
       <div className="flex gap-0 font-medium text-xl items-center">
