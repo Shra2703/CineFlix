@@ -8,6 +8,7 @@ import Featurette from "./Featurette";
 import Extras from "./Extras";
 
 const SecondaryDetailsContainer = ({ type }) => {
+  const details = useSelector((store) => store.movies?.movieDetails);
   const videos = useSelector((store) => store.movies?.movieVideos);
   const recommendations = useSelector(
     (store) => store.movies?.movieRecommendations
@@ -21,15 +22,19 @@ const SecondaryDetailsContainer = ({ type }) => {
   const filterFeature = filterVideos("Featurette");
   const filterTrailers = filterVideos("Trailer");
   const filterTeaser = filterVideos("Teaser");
+  const filterClip = filterVideos("Clip");
 
   const tabs = [
     { type: "Featurette", obj: filterFeature, id: "featurette" },
     { type: "More Like This", obj: recommendations, id: "more" },
     { type: "Trailers", obj: filterTrailers, id: "trailers" },
     { type: "Teaser", obj: filterTeaser, id: "teaser" },
+    { type: "Extras", obj: filterClip, id: "extra" },
   ];
 
   const visibleTabs = tabs.filter((tab) => tab.obj?.length > 0);
+  if (details?.success === false) return;
+
 
   return (
     <div className="mt-14 text-white px-10">

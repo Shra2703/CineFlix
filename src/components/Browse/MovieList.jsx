@@ -16,23 +16,27 @@ const MovieList = ({ title, movieList, type, classname = "pl-10" }) => {
 
       <div className="mt-5 flex overflow-x-auto scroll-smooth gap-4 w-full slider overflow-y-hidden">
         {movieList?.map((movie, index) =>
-          type === "movies" ? (
-            <Link to={`/browse/details-movies/${movie.id}`} key={movie.id}>
-              <MovieCard
-                movie={movie}
-                index={index}
-                length={movieList.length}
-              />
-            </Link>
-          ) : (
-            <Link to={`/browse/details-shows/${movie.id}`} key={movie.id}>
-              <MovieCard
-                movie={movie}
-                index={index}
-                length={movieList.length}
-              />
-            </Link>
-          )
+          type === "movies"
+            ? movie?.poster_path &&
+              movie?.backdrop_path && (
+                <Link to={`/browse/details-movies/${movie.id}`} key={movie.id}>
+                  <MovieCard
+                    movie={movie}
+                    index={index}
+                    length={movieList.length}
+                  />
+                </Link>
+              )
+            : movie?.poster_path &&
+              movie?.backdrop_path && (
+                <Link to={`/browse/details-shows/${movie.id}`} key={movie.id}>
+                  <MovieCard
+                    movie={movie}
+                    index={index}
+                    length={movieList.length}
+                  />
+                </Link>
+              )
         )}
       </div>
     </div>

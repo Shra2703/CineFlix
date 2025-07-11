@@ -9,6 +9,7 @@ import { AppLayout } from "../../App";
 // pages
 import Browse from "../../pages/Browse";
 import MovieDetails from "../../pages/MovieDetails";
+import MovieSearch from "../../pages/MovieSearch";
 
 const useRoutes = () => {
   const routerProvider = createBrowserRouter([
@@ -19,6 +20,10 @@ const useRoutes = () => {
         {
           path: "/",
           element: <SignInOut />,
+        },
+        {
+          path: "/explore",
+          element: <MovieSearch />,
         },
         {
           path: "/browse",

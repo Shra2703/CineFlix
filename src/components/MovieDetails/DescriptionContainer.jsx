@@ -40,7 +40,7 @@ const DescriptionContainer = () => {
       <p className="text-justify">{overview}</p>
       <Genres genres={genres} />
 
-      {videos.length > 0 && (
+      {videos?.length > 0 && (
         <Link to={`video/${videos[0].key}`}>
           <Button
             label="Watch Now"

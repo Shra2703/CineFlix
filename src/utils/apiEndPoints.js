@@ -57,3 +57,7 @@ export const getMovieRecommendationsApi = (movieId) => {
 export const getTvRecommendationsApi = (tvId) => {
   return `https://api.themoviedb.org/3/tv/${tvId}/recommendations`;
 };
+
+export const getMovieSearchApi = (movie) => {
+  return `https://api.themoviedb.org/3/search/collection?query=${movie}&include_adult=false`;
+};

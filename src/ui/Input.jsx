@@ -13,7 +13,7 @@ const Input = ({
   isHiddenPassword = true,
   togglePassword = () => {},
   showToggle = false,
-  classname = "",
+  classname = " focus:ring-2 focus:ring-white/80",
   ref = null
 }) => {
   return (
@@ -28,7 +28,7 @@ const Input = ({
         onBlur={onBlur}
         onFocus={onFocus}
         className={
-          "w-full  px-5 py-3 rounded-md border border-[#ccc] text-white placeholder:text-gray-400 text-base focus:outline-none focus:ring-2 focus:ring-white/80 relative " +
+          "w-full  px-5 py-3 rounded-md border border-[#ccc] text-white placeholder:text-gray-400 text-base relative focus:outline-none " +
           classname
         }
         ref={ref}

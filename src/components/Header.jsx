@@ -1,26 +1,21 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { Search } from "lucide-react";
 
 // constants
 import { LOGO_URL } from "../constanst";
 
 // components
 import UserProfile from "./UserProfile";
-import Button from "../ui/Button"
+import Button from "../ui/Button";
 
 // hook
 import { useAuthStateChange } from "../utils/hooks/useAuthenticate";
 import useAuthenticate from "../utils/hooks/useAuthenticate";
 
-// redux store
-import { toggleGptSearch } from "../utils/redux/slices/gptSlice";
-
-
-
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
-  const dispatch = useDispatch()
   const { authStateChange } = useAuthStateChange();
   const { SignOut } = useAuthenticate();
   const user = useSelector((state) => state.user);
@@ -45,10 +40,7 @@ const Header = () => {
   const handleSignOut = () => {
     SignOut();
   };
-
-  const handleGptToggle = () => {
-    dispatch(toggleGptSearch())
-  }
+  
   return (
     <div
       className={`px-10 py-2  flex justify-between items-center z-1000 fixed top-0 transition-all duration-300 ${
@@ -66,9 +58,11 @@ const Header = () => {
       </div>
 
       {user && (
-        <div className="border flex items-center gap-2">
-        <Button label="GPT Search" classname="px-3 py-5 bg-transparent border rounded hover:!bg-black" onClick={handleGptToggle}/>
-        <UserProfile user={user?.displayName} onSignOut={handleSignOut} />
+        <div className="flex items-center gap-2">
+          <Link to={"/explore"}>
+            <Search className="text-white cursor-pointer mr-4" />
+          </Link>
+          <UserProfile user={user?.displayName} onSignOut={handleSignOut} />
         </div>
       )}
     </div>
