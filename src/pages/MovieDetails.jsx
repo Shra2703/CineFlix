@@ -17,6 +17,8 @@ const MovieDetails = () => {
   const type = pathname.split("/")[2].split("-")[1];
   const { id } = useParams();
   const error = useSelector((store) => store.error?.errorMessage);
+  const details = useSelector((store) => store.movies?.movieDetails);
+
   const { isPending } = useMovieDetails(id, type);
   useMovieRecommendation(id, type);
   useMovieVideos(id, type);
@@ -34,6 +36,14 @@ const MovieDetails = () => {
         {error}
       </h1>
     );
+
+  if (!details) {
+    return (
+      <h1 className="text-white w-full h-screen bg-black relative font-consent text-6xl flex items-center justify-center">
+        No details found
+      </h1>
+    );
+  }
 
   return (
     <div className="relative bg-black font-roboto h-full transition-all duration-400 flex flex-col overflow-y-hidden">

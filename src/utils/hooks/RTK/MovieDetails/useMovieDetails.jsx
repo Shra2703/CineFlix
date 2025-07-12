@@ -10,7 +10,6 @@ import {
   addMovieDetails,
   clearMovieDetails,
 } from "../../../redux/slices/movieSlice";
-
 import { setError, clearError } from "../../../redux/slices/errorSlice";
 
 // api endpoint
@@ -19,40 +18,50 @@ import { getMovieDetailsApi, getTvDetailsApi } from "../../../apiEndPointsRTK";
 const useMovieDetails = (id, type) => {
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(clearMovieDetails());
+  }, [id]);
+
   const fetchMovieDetails = async () => {
-    try {
-      let response = null;
-      if (type === "movies") {
-        response = await axiosInstance.get(getMovieDetailsApi(id));
-      } else {
-        response = await axiosInstance.get(getTvDetailsApi(id));
-      }
-      const results = response?.data;
-      return results;
-    } catch (error) {
-      console.error("❌ API error:", error.message);
-      return [];
+    let response;
+    if (type === "movies") {
+      response = await axiosInstance.get(getMovieDetailsApi(id));
+    } else {
+      response = await axiosInstance.get(getTvDetailsApi(id));
     }
+
+    const results = response?.data;
+    if (!results) {
+      throw new Error("Movie/TV details not found");
+    }
+
+    return results;
   };
 
-  const { data, error, isPending } = useQuery({
+  const { data, error, isPending, isError, isSuccess } = useQuery({
     queryKey: ["movieDetails", id],
     queryFn: fetchMovieDetails,
-    staleTime: 1000 * 60 * 5,
+    staleTime: 1000 * 60 * 2,
+    enabled: !!id,
+    retry: false,
   });
 
   useEffect(() => {
-    if (error) {
-      dispatch(setError(error.message || "Something went wrong"));
-    }
-    if (data) {
-      dispatch(clearMovieDetails());
+    if (isSuccess && data) {
       dispatch(clearError());
       dispatch(addMovieDetails(data));
     }
-  }, [data, id]);
 
-  return { isPending };
+    if (isError && error) {
+      dispatch(setError(error.message));
+    }
+  }, [isSuccess, isError, data, error, dispatch]);
+
+  return {
+    isPending,
+    isError,
+    error,
+  };
 };
 
 export default useMovieDetails;
