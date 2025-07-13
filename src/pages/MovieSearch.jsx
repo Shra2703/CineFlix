@@ -7,14 +7,13 @@ import { useSelector } from "react-redux";
 import Input from "../ui/Input";
 
 // hook
-import useSearch from "../utils/hooks/useSearch";
+import useSearch from "../utils/hooks/RTK/useSearch";
 import MovieCard from "../components/Browse/MovieCard";
 
 const MovieSearch = () => {
   const [search, setSearch] = useState("");
   useSearch(search);
-  const searchResults =
-    useSelector((store) => store.search?.searchResults) || [];
+  const searchResults = useSelector((store) => store.search?.searchResults);
 
   return (
     <div className="w-full min-h-screen bg-[#0F1016] font-roboto transition-all duration-200">

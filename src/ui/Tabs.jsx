@@ -1,8 +1,10 @@
 import { useState } from "react";
+import Divider from "./Divider";
 
 const Tabs = ({ tabs, classname = "" }) => {
   const firstAvailableTab = tabs.find((tab) => tab.obj?.length !== 0);
   const [activeTab, setActiveTab] = useState(firstAvailableTab?.id);
+  console.log(tabs)
   const handleScroll = (id) => {
     const element = document.getElementById(id);
     if (element) {
@@ -33,6 +35,7 @@ const Tabs = ({ tabs, classname = "" }) => {
             )
         )}
       </div>
+      {tabs.length > 0 && <Divider /> }
     </div>
   );
 };

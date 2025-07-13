@@ -39,7 +39,7 @@ const SecondaryDetailsContainer = ({ type }) => {
   return (
     <div className="mt-14 text-white px-10">
       <Tabs tabs={visibleTabs} />
-      <Divider />
+      {/* <Divider /> */}
 
       <div className="space-y-10 mt-6">
         {visibleTabs.map((tab) => (

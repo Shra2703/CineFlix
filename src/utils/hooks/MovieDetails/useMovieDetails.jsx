@@ -40,8 +40,6 @@ const useMovieDetails = (id, type) => {
         console.warn("No movie/TV details found.");
       }
     } catch (error) {
-      // console.error("Error fetching movie/TV details:", error.message);
-      // Optionally dispatch an error action
       dispatch(setError(error.message));
     }
   };
