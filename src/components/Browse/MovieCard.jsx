@@ -6,7 +6,7 @@ const MovieCard = ({ movie, index, length }) => {
   const { poster_path, title, name } = movie;
 
   return (
-    <div className="w-48 flex-shrink-0 group relative max-sm:w-36">
+    <div className="w-48 flex-shrink-0 group relative max-md:w-36">
       <div className="w-full h-full overflow-hidden rounded-sm">
         <img
           src={MOVIE_POSTER + poster_path}

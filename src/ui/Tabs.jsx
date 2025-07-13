@@ -16,7 +16,7 @@ const Tabs = ({ tabs, classname = "" }) => {
     <div>
       <div
         className={
-          "flex gap-10 font-[600] text-xl  mb-9 text-gray-400  transition-all duration-500 " +
+          "flex gap-10 font-[600] text-xl  mb-9 text-gray-400  transition-all duration-500 max-sm:text-base max-sm:text-nowrap max-sm:overflow-y-scroll slider max-sm:px-3.5 max-sm:gap-5 max-sm:mb-5" + " " +
           classname
         }
       >

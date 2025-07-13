@@ -19,7 +19,7 @@ const Button = ({
           classname
         }
       >
-        <span> {showIcon && Icon}</span>
+        <span className="max-md:hidden"> {showIcon && Icon}</span>
         <span>{label}</span>
       </button>
     </div>

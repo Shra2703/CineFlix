@@ -24,11 +24,11 @@ const DescriptionContainer = () => {
     name,
   } = details || {};
   return (
-    <div className="w-1/2 h-full relative z-200 px-10 flex flex-col justify-center text-white gap-4 font-roboto ">
+    <div className="w-[60%] h-full relative z-200 px-10 flex flex-col justify-center text-white gap-4 font-roboto max-md:w-full max-md:gap-2">
       <h1 className="font-consent text-6xl cursor-pointer max-sm:text-4xl ">
         {title || original_title || name || original_name}
       </h1>
-      <div className="flex gap-0 font-medium text-xl items-center">
+      <div className="flex gap-0 font-medium text-xl items-center max-md:text-xs">
         {release_date?.split("-")[0] || first_air_date?.split("-")[0]}
         <RoundedDivider />
 
@@ -37,7 +37,7 @@ const DescriptionContainer = () => {
         <RoundedDivider />
         <Countries country={origin_country} />
       </div>
-      <p className="text-justify">{overview}</p>
+      <p className="text-justify max-md:text-xs max-md:line-clamp-3">{overview}</p>
       <Genres genres={genres} />
 
       {videos?.length > 0 && (
@@ -46,7 +46,7 @@ const DescriptionContainer = () => {
             label="Watch Now"
             showIcon={true}
             Icon={<Play />}
-            classname="mt-4 bg-white !text-black hover:bg-white/70 !w-1/2"
+            classname="mt-4 bg-white !text-black hover:bg-white/70 !w-1/2 max-md:text-sm max-md:!w-1/3 max-md:mt-2"
           />
         </Link>
       )}
@@ -81,7 +81,7 @@ const Genres = ({ genres }) => {
   return (
     <Layout>
       {genres?.map((genre, index) => (
-        <span key={genre.id} className="text-nowrap">
+        <span key={genre.id} className="text-nowrap max-md:text-xs">
           {genre.name}
           {index != genres.length - 1 && <span className="mx-3">|</span>}
         </span>

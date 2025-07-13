@@ -12,9 +12,9 @@ const Extras = ({ tab }) => {
     <div>
       <div className="mb-8">
         <h2 className="text-2xl font-semibold mb-4">{tab.type}</h2>
-        <div className="flex flex-row gap-4 overflow-x-auto scroll-smooth slider">
+        <div className="flex flex-row gap-0 overflow-x-auto scroll-smooth slider">
           {tab.obj.map((item, index) => (
-            <Link to={`video/${item.key}`} key={index} className="block w-1/4 flex-shrink-0 h-full">
+            <Link to={`video/${item.key}`} key={index} className="block w-1/4 flex-shrink-0 h-full max-sm:w-[90%] max-lg:w-[45%]">
               <FeaturetteCard
                 item={item}
                 imageUrl={backdrop_path}

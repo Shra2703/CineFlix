@@ -19,11 +19,14 @@ const Featurette = ({ feature }) => {
     <div>
       <div className="grid grid-cols-1 gap-4 overflow-y-auto scroll-smooth w-full slider overflow-x-hidden pt-2.5">
         {feature.slice(0,4).map((item, index) => (
-          <Link to={`video/${item.key}`} key={index}>
+          <Link to={`video/${item.key}`} key={index} className="block w-[90%] flex-shrink-0 h-full max-lg:w-full">
             <FeaturetteCard
               item={item}
               imageUrl={backdrop_path}
               overview={overview}
+              classname="max-sm:flex-col  max-sm:h-auto"
+              imageClass="w-1/2 max-md:w-[70%] max-sm:w-full"
+              paraClass="max-sm: w-full max-sm:text-sm"
             />
           </Link>
         ))}
@@ -44,11 +47,11 @@ export const FeaturetteCard = ({
 }) => {
   return (
     <div
-      className={"w-[90%] h-52 bg-black/20 flex px-4 py-3 rounded " + classname}
+      className={" h-52 bg-black/20 flex px-4 py-3 rounded " + classname}
     >
       <div
         className={
-          "w-1/3 h-full rounded-2xl mr-4 relative shadow border border-gray-50 " +
+          "h-full rounded-2xl mr-4 relative shadow border border-gray-50 " +
           imageClass
         }
       >
@@ -62,7 +65,7 @@ export const FeaturetteCard = ({
       <div
         className={"flex flex-col gap-3 mt-3 w-2/3 text-gray-300 " + paraClass}
       >
-        <p className="text-3xl font-consent text-white truncate">{item.name}</p>
+        <p className="text-3xl font-consent text-white truncate max-sm:text-2xl">{item.name}</p>
         <div className="font-medium uppercase flex items-center">
           <p>{getReleaseYear(item.published_at)}</p>
           <RoundedDivider />
