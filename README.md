@@ -6,20 +6,34 @@
 
 ## 🚀 Live Demo
 
-> Coming soon... (Optional: Add your deployed link here)
+🌐 **Live App:** [https://cineflix-web.netlify.app](https://cineflix-web.netlify.app)
+
+Click the link above to explore CineFlix live — browse movies, watch trailers, and search content from TMDb. 🔍🍿
 
 ---
 
 ## 🧰 Tech Stack
 
-- **React.js** – Frontend framework
-- **Tailwind CSS** – Utility-first CSS framework
-- **React Query (TanStack Query)** – Data fetching and caching
-- **Firebase Authentication** – For user sign-up and login with email/password
-- **TMDb API** – To fetch movie/TV data
+- **React.js** – Frontend UI framework
+- **Tailwind CSS** – Utility-first CSS for styling
+- **React Query (TanStack Query)** – API data fetching and caching
+- **Redux** – For global state management (e.g., auth state, search results)
+- **Firebase Authentication** – Email/password login
+- **TMDb API** – Movie & TV show data source
 - **React Router DOM** – Client-side routing
 
 ---
+
+## 🧠 State Management
+
+CineFlix uses both **Redux** and **React Query**:
+
+- 🔄 **Redux** is used for managing global UI state such as:
+  - Auth state (is the user logged in?)
+  - Search results
+  - Current movie/show details
+- ⚡ **React Query** handles remote data fetching and caching from the TMDb API
+- 🔥 This combination ensures better **performance**, **state consistency**, and **scalability**
 
 ## 🔐 Authentication
 
@@ -101,21 +115,6 @@
 
 ---
 
-## 📁 Folder Structure
-
-cineflix/
-├── public/
-├── src/
-│ ├── components/
-│ ├── pages/
-│ ├── ui/
-│ ├── utils/ (API functions)
-│ ├── main.jsx/
-│ ├── constanst.js
-│ └── App.jsx
-├── .env
-└── README.md
-
 ## 🏁 Getting Started
 
 ### 1. Clone the repository
@@ -141,6 +140,7 @@ VITE_TMDB_API_KEY=your_tmdb_key
 VITE_FIREBASE_API_KEY=your_firebase_api_key
 # ...other Firebase config
 ```
+
 ---
 
 ## 📊 Project Difficulty Level
