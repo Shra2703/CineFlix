@@ -47,7 +47,7 @@ export const FeaturetteCard = ({
 }) => {
   return (
     <div
-      className={" h-52 bg-black/20 flex px-4 py-3 rounded " + classname}
+      className={" h-52 bg-black/20 flex px-4 py-3 rounded max-md:px-2 " + classname}
     >
       <div
         className={

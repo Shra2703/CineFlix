@@ -1,6 +1,5 @@
 
 // components
-import GptSearch from "../components/Browse/GptSearch";
 import MainContainer from "../components/Browse/MainContainer";
 import SecondaryContainer from "../components/Browse/SecondaryContainer";
 
@@ -13,13 +12,6 @@ import useArrivingToday from "../utils/hooks/RTK/Tv/useArrivingToday";
 import useOnTheAirTv from "../utils/hooks/RTK/Tv/useOnTheAirTv";
 import usePopularTv from "../utils/hooks/RTK/Tv/usePopularTv";
 import useTopRatedTv from "../utils/hooks/RTK/Tv/useTopRatedTv";
-// import useOnTheAirTv from "../utils/hooks/Tv/useOnTheAirTv";
-// import usePopularTv from "../utils/hooks/Tv/usePopularTv";
-// import useTopRatedTv from "../utils/hooks/Tv/useTopRatedTv";
-// import useArrivingTodayTv from "../utils/hooks/Tv/useARrivingToday";
-// import usePopularMovies from "../utils/hooks/usePopularMovies";
-// import useTopRatedMovies from "../utils/hooks/useTopRatedMovies";
-// import useUpcomingMovies from "../utils/hooks/useUpcomingMovies";
 
 const Browse = () => {
 

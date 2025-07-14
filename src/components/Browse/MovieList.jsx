@@ -4,7 +4,7 @@ import { ChevronRight } from "lucide-react";
 import MovieCard from "./MovieCard";
 import { Link } from "react-router-dom";
 
-const MovieList = ({ title, movieList, type, classname = "pl-10" }) => {
+const MovieList = ({ title, movieList, type, classname = "pl-10 max-md:pl-3" }) => {
   return (
     <div className={"w-full pb-8 " + classname}>
       <h1 className="font-medium text-2xl mt-5 flex gap-1 items-center">

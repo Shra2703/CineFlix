@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const TitleContainer = ({ title = "", overview, id }) => {
   return (
-    <div className="w-1/2 h-full min-h-[80vh] relative z-200 px-10 flex flex-col justify-center text-white gap-4 font-roboto -mt-14 max-lg:-mt-0 max-sm:-mt-7 max-md:w-[80%]">
+    <div className="w-1/2 h-full min-h-[80vh] relative z-200 px-10 flex flex-col justify-center text-white gap-4 font-roboto -mt-14 max-lg:-mt-0 max-sm:-mt-7 max-md:w-[80%] max-md:px-3">
       <div className="group">
         <h1 className="font-consent text-7xl cursor-pointer max-sm:text-4xl max-md:text-nowrap">
           {title}

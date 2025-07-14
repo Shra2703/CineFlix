@@ -18,7 +18,7 @@ const Extras = ({ tab }) => {
               <FeaturetteCard
                 item={item}
                 imageUrl={backdrop_path}
-                classname="flex-col gap-1.5 h-full w-full"
+                classname="flex-col gap-1.5 h-full w-full "
                 imageClass="w-full"
                 paraClass="w-full"
               />

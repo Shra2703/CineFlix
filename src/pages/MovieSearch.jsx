@@ -17,7 +17,7 @@ const MovieSearch = () => {
 
   return (
     <div className="w-full min-h-screen bg-[#0F1016] font-roboto transition-all duration-200">
-      <div className="max-w-7xl mx-auto flex flex-col pt-24 gap-6 max-lg:max-w-3xl  max-md:max-w-xl max-sm:mx-12">
+      <div className="max-w-6xl mx-auto flex flex-col pt-24 gap-6 max-lg:max-w-2xl  max-md:max-w-xl max-sm:mx-12">
 
         <MovieSearchBar search={search} setSearch={setSearch} />
         <div className=" w-full flex flex-wrap gap-6 justify-start mb-12 max-lg:justify-evenly">

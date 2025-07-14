@@ -25,21 +25,21 @@ const MovieDetails = () => {
 
   if (isPending)
     return (
-      <main className="text-white w-full h-screen bg-black relative flex items-center justify-center p-20">
+      <main className="text-white w-full h-screen bg-black relative flex items-center justify-center p-20 max-md:p-10">
         <BoxSkeleton classname=" w-full h-full max-sm:h-60 max-sm:mb-14" />
       </main>
     );
 
   if (error)
     return (
-      <h1 className="text-white w-full h-screen bg-black relative font-consent text-6xl flex items-center justify-center">
+      <h1 className="text-white w-full h-screen bg-black relative font-consent text-6xl flex items-center justify-center max-md:text-2xl">
         {error}
       </h1>
     );
 
   if (!details) {
     return (
-      <h1 className="text-white w-full h-screen bg-black relative font-consent text-6xl flex items-center justify-center">
+      <h1 className="text-white w-full h-screen bg-black relative font-consent text-6xl flex items-center justify-center max-md:text-2xl">
         No details found
       </h1>
     );
