@@ -1,3 +1,4 @@
+import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 
 // components
@@ -7,9 +8,12 @@ import Videos from "../../components/MovieDetails/Videos";
 import { AppLayout } from "../../App";
 
 // pages
-import Browse from "../../pages/Browse";
-import MovieDetails from "../../pages/MovieDetails";
-import MovieSearch from "../../pages/MovieSearch";
+// import Browse from "../../pages/Browse";
+
+// code splitting
+const Browse = React.lazy(() => import('../../pages/Browse'));
+const MovieDetails = React.lazy(() => import('../../pages/MovieDetails'));
+const MovieSearch = React.lazy(() => import('../../pages/MovieSearch'));
 
 const useRoutes = () => {
   const routerProvider = createBrowserRouter([

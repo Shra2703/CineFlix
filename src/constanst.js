@@ -7,14 +7,11 @@ export const BACKGROUND_IMG_URL =
 export const MOVIE_POSTER = "https://image.tmdb.org/t/p/w500/";
 export const MOVIE_POSTER_LARGE = "https://image.tmdb.org/t/p/w1280/";
 
+const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 export const API_OPTIONS = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyNzM1MDk5ZWEyNTg3YTJkNjZjNTY0ZWYzN2RlMWQzYiIsIm5iZiI6MTcwODI2MDEzOC41OTMsInN1YiI6IjY1ZDFmYjJhYjQyMjQyMDE4N2IzMmY2NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.t9NI_2xZPXiNhAOX_ga0M3KwunMooBWmg5Lp0Jhktf4",
+    Authorization: API_KEY,
   },
 };
-
-  export const OPEN_AI_KEY =
-  "7776c228-8639-4c73-a029-9491a34aaab2";
