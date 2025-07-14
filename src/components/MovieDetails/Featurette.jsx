@@ -65,7 +65,7 @@ export const FeaturetteCard = ({
       <div
         className={"flex flex-col gap-3 mt-3 w-2/3 text-gray-300 " + paraClass}
       >
-        <p className="text-3xl font-consent text-white truncate max-sm:text-2xl">{item.name}</p>
+        <p className="text-2xl font-consent text-white truncate max-sm:text-2xl text-wrap">{item.name}</p>
         <div className="font-medium uppercase flex items-center">
           <p>{getReleaseYear(item.published_at)}</p>
           <RoundedDivider />
