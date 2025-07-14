@@ -84,7 +84,7 @@
 
 - Netflix-style layout and styling
 - **Navbar** includes:
-  - Logo 
+  - Logo
   - Search Icon
   - **User Avatar with Initials** (e.g. "US") from Firebase Auth
 - Fully **responsive design**
@@ -102,6 +102,7 @@
 ---
 
 ## 📁 Folder Structure
+
 cineflix/
 ├── public/
 ├── src/
@@ -115,10 +116,10 @@ cineflix/
 ├── .env
 └── README.md
 
-
 ## 🏁 Getting Started
 
 ### 1. Clone the repository
+
 ```bash
 # Clone the repository
 git clone https://github.com/your-username/cineflix.git
@@ -127,15 +128,62 @@ cd cineflix
 # Install dependencies
 npm install
 
-# Add your environment variables
-# .env file
-REACT_APP_TMDB_API_KEY=your_tmdb_key
-REACT_APP_FIREBASE_API_KEY=your_firebase_api_key
-# ...other Firebase config
-
 # Run the app
 npm start
 ```
 
-## 📷 ScreenShots
+### 2. Add environments variables
 
+```bash
+# Add your environment variables
+# .env file
+VITE_TMDB_API_KEY=your_tmdb_key
+VITE_FIREBASE_API_KEY=your_firebase_api_key
+# ...other Firebase config
+```
+---
+
+## 📊 Project Difficulty Level
+
+> **Level:** 🟨 Medium
+
+This project is ideal for **intermediate frontend developers** who want to practice:
+
+- Firebase Authentication
+- API integration with React Query
+- Protected Routes and Routing
+- Performance optimizations (debouncing, code-splitting)
+- Responsive UI design using Tailwind CSS
+
+---
+
+## 🚀 Future Enhancements
+
+- ❤️ Watchlist / Favorites functionality
+- 🌍 Multi-language support
+- 🌓 Dark mode toggle
+- 🔔 Add toast notifications (e.g., login success, errors)
+
+---
+
+## 🤝 Acknowledgements
+
+- [TMDb](https://www.themoviedb.org/) – for providing an amazing free API for movies and TV shows
+- [Firebase](https://firebase.google.com/) – for easy and scalable authentication
+- [React Query](https://tanstack.com/query/latest) – for powerful data fetching and caching
+- [React Router](https://reactrouter.com/) – for client-side routing
+
+---
+
+## 📝 License
+
+This project is licensed under the **MIT License**.  
+You are free to use, modify, and distribute this project for personal and commercial purposes.
+
+---
+
+## 👤 Author
+
+**Shraddha Goyal**  
+[GitHub Profile](https://github.com/Shra2703)  
+Feel free to connect or collaborate!
